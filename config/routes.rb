@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root "static#home"
   resources :paintings, only: :index
-  resources :users, only: :show
+  resources :users, only: [:show, :new, :create]
 
   get "/signin", to: "sessions#signin"
   post "/login", to: "sessions#login"
