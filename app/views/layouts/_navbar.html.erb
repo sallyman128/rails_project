@@ -1,0 +1,19 @@
+<header>
+  <% if session[:user_id] %>
+    <table>
+      <tr>
+        <th><%= link_to 'Home', root_path %></th>
+        <th><%= link_to User.find(session[:user_id]).name, user_path(session[:user_id]) %></th>
+        <th><%= link_to 'All Paintings', paintings_path %></th>
+        <th><%= link_to "Logout", logout_path, method: :post %>
+      </tr>
+    </table>
+  <% else %>
+    <table>
+      <tr>
+        <th><%= link_to 'Home', root_path %></th>
+        <th><%= link_to 'Signin', signin_path %></th>
+      </tr>
+    </table>
+  <% end %>
+</header>
