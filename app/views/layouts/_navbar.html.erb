@@ -4,9 +4,8 @@
       <tr>
         <th><%= link_to 'Home', root_path %></th>
         <th><%= link_to "My profile", user_path(session[:user_id]) %></th>
-
         <th><%= link_to 'All paintings', paintings_path %></th>
-        <th><%= link_to "Logout", logout_path, method: :post %>
+        <th><%= link_to "Logout", logout_path, method: :post %></th>
       </tr>
     </table>
   <% else %>
@@ -14,6 +13,7 @@
       <tr>
         <th><%= link_to 'Home', root_path %></th>
         <th><%= link_to 'Signin', signin_path %></th>
+        <th><%= link_to 'New user', new_user_path %></th>
       </tr>
     </table>
   <% end %>
