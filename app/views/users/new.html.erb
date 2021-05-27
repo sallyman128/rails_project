@@ -1,9 +1,12 @@
 <h1>New User form</h1>
 
 <%  if @user.errors.any? %>
+  <p style="color:red; font-weight: bold">
+    <%= @user.errors.size %> errors found. 
+  </p>
   <ul>
     <% @user.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
+      <li style="color:red;"><%= message %></li>
     <% end %>
   </ul>
 <% end %>
@@ -22,11 +25,6 @@
   <p>
     <%= form.label :password %>
     <%= form.password_field :password %>
-  </p>
-
-  <p>
-    <%= form.label "Password confirmation" %>
-    <%= form.text_field :passowrd_confirmation %>
   </p>
 
   <%= form.submit %>
