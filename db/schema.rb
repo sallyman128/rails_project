@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_26_231546) do
+ActiveRecord::Schema.define(version: 2021_05_27_032026) do
 
   create_table "artist_playlists", force: :cascade do |t|
     t.integer "artist_id"
@@ -25,6 +25,13 @@ ActiveRecord::Schema.define(version: 2021_05_26_231546) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "classes", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "teacher_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "playlists", force: :cascade do |t|
     t.string "title"
     t.integer "user_id"
@@ -35,6 +42,23 @@ ActiveRecord::Schema.define(version: 2021_05_26_231546) do
   create_table "songs", force: :cascade do |t|
     t.string "name"
     t.integer "artist_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.date "birthdate"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "teachers", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
