@@ -1,0 +1,11 @@
+<% if @user %>
+  <h1><%= @user.name %>'s Galleries</h1>
+<% else %>
+  <h1>All Galleries</h1>
+<% end %>
+
+<% @galleries.each do |gallery| %>
+  <p>
+    <%= gallery.name %>
+  </p>
+<% end %>
