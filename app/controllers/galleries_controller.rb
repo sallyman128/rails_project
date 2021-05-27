@@ -7,4 +7,8 @@ class GalleriesController < ApplicationController
       @galleries = Gallery.all
     end
   end
+
+  def show
+    @gallery = Gallery.find_by(id: params[:id])
+  end
 end

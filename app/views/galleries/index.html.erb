@@ -4,8 +4,16 @@
   <h1>All Galleries</h1>
 <% end %>
 
-<% @galleries.each do |gallery| %>
-  <p>
-    <%= gallery.name %>
-  </p>
-<% end %>
+<table>
+  <tr>
+    <th>Gallery Name</th>
+    <th>Owner</th>
+  <tr>
+  <% @galleries.each do |gallery| %>
+    <tr>
+      <td><%= gallery.name %></td>
+      <td><%= gallery.user.name %></td>
+      <td><%= link_to 'Show', gallery_path(gallery) %>
+    </tr>
+  <% end %>
+</table>

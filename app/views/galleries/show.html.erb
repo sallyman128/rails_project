@@ -1,0 +1,21 @@
+<h1>Show Gallery</h1>
+<h2>Name: <%= @gallery.name %></h2>
+<h3>Owner: <%= @gallery.user.name %></h3>
+
+<h4>Paintings</h4>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Artist</th>
+    <th>Country</th>
+  </tr>
+  <% @gallery.paintings.each do |painting| %>
+    <tr>
+      <td><%= painting.title %></td>
+      <td><%= painting.artist_name %></td>
+      <td><%= painting.country %></td>
+      <td><%= link_to "Show", painting_path(painting) %></td>
+    </tr>
+  <% end %>
+</table>
