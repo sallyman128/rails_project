@@ -1,1 +1,17 @@
-Sign in Page
+<h1>Sign in Page</h1>
+
+<%= form_with url: login_path do |form| %>
+  <p>
+    <%= form.label :email %>
+    <%= form.email_field :email %>
+  </p>
+
+  <p>
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+  </p>
+
+  <%= form.submit "Login" %>
+
+<% end %>
+
