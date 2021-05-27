@@ -1,4 +1,4 @@
 class Student < ApplicationRecord
-  has_many :classes
-  has_many :teachers, through: :classes
+  has_many :subjects
+  has_many :teachers, through: :subjects
 end
