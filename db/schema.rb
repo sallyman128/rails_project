@@ -10,25 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_27_032026) do
+ActiveRecord::Schema.define(version: 2021_05_27_080942) do
 
-  create_table "students", force: :cascade do |t|
+  create_table "galleries", force: :cascade do |t|
     t.string "name"
-    t.date "birthdate"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "subjects", force: :cascade do |t|
-    t.string "name"
-    t.string "room_number"
-    t.integer "student_id"
-    t.integer "teacher_id"
+  create_table "gallery_paintings", force: :cascade do |t|
+    t.integer "gallery_id"
+    t.integer "painting_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "teachers", force: :cascade do |t|
+  create_table "paintings", force: :cascade do |t|
+    t.string "title"
+    t.string "artist_name"
+    t.string "country"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "password_digest"

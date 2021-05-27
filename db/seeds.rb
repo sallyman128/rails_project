@@ -1,22 +1,10 @@
-# create Teachers and Students + associate them through subjects
-# create Subjects
-subjects = ["math", "science", "history"]
-# 3.times {|i| Subject.new(name: subjects[i], room_number: Faker::Number.hexadecimal(3).upcase)}
-
+3.times {User.create(name: Faker::StarWars.character, email: Faker::Internet.email, password: Faker::Pokemon.name)}
+10.times {Painting.create(title: Faker::Book.title, artist_name: Faker::GameOfThrones.character, country: Faker::Address.country)}
 3.times do |i|
-  teacher1 = Teacher.create(name: Faker::GameOfThrones.character, email: Faker::Internet.email, password:Faker::Pokemon.name)
-  teacher2 = Teacher.create(name: Faker::GameOfThrones.character, email: Faker::Internet.email, password:Faker::Pokemon.name)
-
-  student1 = Student.create(name: Faker::StarWars.character, birthdate: Faker::Date.between(25.years.ago, 18.years.ago))
-  student2 = Student.create(name: Faker::StarWars.character, birthdate: Faker::Date.between(25.years.ago, 18.years.ago))
-  student3 = Student.create(name: Faker::StarWars.character, birthdate: Faker::Date.between(25.years.ago, 18.years.ago))
-  
-  student1.subjects << teacher1.subjects.create(name: subjects[i], room_number: Faker::Number.hexadecimal(3).upcase)
-  student2.subjects << teacher1.subjects.create(name: subjects[i], room_number: Faker::Number.hexadecimal(3).upcase)
-  student3.subjects << teacher1.subjects.create(name: subjects[i], room_number: Faker::Number.hexadecimal(3).upcase)
-
-  student1.subjects << teacher2.subjects.create(name: subjects[i], room_number: Faker::Number.hexadecimal(3).upcase)
-  student2.subjects << teacher2.subjects.create(name: subjects[i], room_number: Faker::Number.hexadecimal(3).upcase)
-  student3.subjects << teacher2.subjects.create(name: subjects[i], room_number: Faker::Number.hexadecimal(3).upcase)
-
+  gallery1 = User.all[i].galleries.create(name: Faker::App.name)
+  gallery2 = User.all[i].galleries.create(name: Faker::App.name)
+  gallery1.paintings << Painting.all[i]
+  gallery1.paintings << Painting.all[i+1]
+  gallery2.paintings << Painting.all[i+2]
+  gallery2.paintings << Painting.all[i+3]
 end
