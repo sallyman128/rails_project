@@ -1,0 +1,29 @@
+<h1>New painting</h1>
+
+<%  if @painting.errors.any? %>
+  <p style="color:red; font-weight: bold">
+    <%= @painting.errors.size %> errors found. 
+  </p>
+  <ul>
+    <% @painting.errors.full_messages.each do |message| %>
+      <li style="color:red;"><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @painting do |form| %>
+  <p>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </p>
+  <p>
+    <%= form.label :artist_name %>
+    <%= form.text_field :artist_name %>
+  </p>
+  <p>
+    <%= form.label :country %>
+    <%= form.text_field :country %>
+  </p>
+
+  <%= form.submit %>
+<% end %>
