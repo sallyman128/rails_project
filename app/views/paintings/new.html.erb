@@ -22,7 +22,7 @@
   </p>
   <p>
     <%= form.label :country %>
-    <%= form.text_field :country %>
+    <%= form.select :country, all_countries, include_blank: true %>
   </p>
 
   <%= form.submit %>
