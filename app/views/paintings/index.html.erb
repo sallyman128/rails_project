@@ -1,0 +1,16 @@
+<h1>All Paintings</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Artist</th>
+    <th>Country</th>
+  </tr>
+  <% @paintings.each do |painting| %>
+    <tr>
+      <td><%= painting.title %></td>
+      <td><%= painting.artist_name %></td>
+      <td><%= painting.country %></td>
+    </tr>
+  <% end %>
+</table>
