@@ -18,6 +18,8 @@ class PaintingsController < ApplicationController
 
   def create
     @painting = Painting.new(painting_params)
+    galleries = painting_gallery_params[:galleries][1..].map{ |g_index| Gallery.find_by(id: g_index) }
+    @painting.galleries << galleries
     if @painting.save
       redirect_to paintings_path
     else
@@ -28,5 +30,9 @@ class PaintingsController < ApplicationController
   private
   def painting_params
     params.require(:painting).permit(:title, :artist_name, :country)
+  end
+
+  def painting_gallery_params
+    params.require(:painting).permit(galleries:[])
   end
 end
