@@ -18,7 +18,7 @@ class GalleriesController < ApplicationController
 
   def create
     @gallery = Gallery.new(gallery_params)
-    binding.pry
+    gallery_paintings_params[:paintings][1..].each { |id| @gallery.paintings << Painting.find_by(id: id) }
     if @gallery.save
       redirect_to galleries_path
     else
@@ -28,6 +28,10 @@ class GalleriesController < ApplicationController
 
   private
     def gallery_params
-      params.require(:gallery).permit(:user_id, :name, paintings:[], paintings_attributes:[:title, :artist_name, :country])
+      params.require(:gallery).permit(:user_id, :name)
+    end
+
+    def gallery_paintings_params
+      params.require(:gallery).permit(paintings:[])
     end
 end
