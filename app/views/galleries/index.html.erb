@@ -15,6 +15,7 @@
       <td><%= gallery.user.name %></td>
       <td><%= link_to 'Show', gallery_path(gallery) %>
       <td><%= link_to 'Edit', edit_gallery_path(gallery) if current_user == gallery.user%>
+      <td><%= link_to 'Destroy', gallery_path(gallery), method: :delete if current_user == gallery.user%>
     </tr>
   <% end %>
 </table>
