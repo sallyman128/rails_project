@@ -1,6 +1,11 @@
 class PaintingsController < ApplicationController
   def index
-    @paintings = Painting.all
+    if params[:user_id]
+      @user = User.find_by(id: params[:user_id])
+      @paintings = @user.paintings
+    else
+      @paintings = Painting.all
+    end
   end
 
   def show

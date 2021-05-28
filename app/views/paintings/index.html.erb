@@ -1,4 +1,8 @@
-<h1>All Paintings</h1>
+<% if @user %>
+  <h1><%= @user.name %>'s Paintings</h1>
+<% else %>
+  <h1>All Paintings</h1>
+<% end %>
 
 <table>
   <tr>

@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   resources :galleries, only: [:index, :show, :new, :create]
 
   resources :users, only: [:show, :new, :create] do
-    resources :galleries, only: [:index]
+    resources :galleries, only: :index
+    resources :paintings, only: :index
   end
 
   get "/signin", to: "sessions#signin"
