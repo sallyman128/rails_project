@@ -18,8 +18,6 @@ class PaintingsController < ApplicationController
 
   def create
     @painting = Painting.new(painting_params)
-    galleries = painting_gallery_params[:galleries][1..].map{ |g_index| Gallery.find_by(id: g_index) }
-    @painting.galleries << galleries
     if @painting.save
       redirect_to paintings_path
     else
@@ -28,11 +26,16 @@ class PaintingsController < ApplicationController
   end
 
   def edit
-
+    @painting = Painting.find_by(id: params[:id])
   end
 
   def update
-
+    @painting = Painting.find_by(id: params[:id])
+    if @painting.update(painting_params)
+      redirect_to paintings_path
+    else
+      render 'edit'
+    end
   end
   
   def destroy
@@ -41,10 +44,7 @@ class PaintingsController < ApplicationController
 
   private
   def painting_params
-    params.require(:painting).permit(:title, :artist_name, :country)
+    params.require(:painting).permit(:title, :artist_name, :country, gallery_ids:[])
   end
 
-  def painting_gallery_params
-    params.require(:painting).permit(galleries:[])
-  end
 end

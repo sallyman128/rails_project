@@ -1,33 +1,3 @@
 <h1>New painting</h1>
 
-<%  if @painting.errors.any? %>
-  <p style="color:red; font-weight: bold">
-    <%= @painting.errors.size %> errors found. 
-  </p>
-  <ul>
-    <% @painting.errors.full_messages.each do |message| %>
-      <li style="color:red;"><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
-
-<%= form_with model: @painting do |form| %>
-  <p>
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </p>
-  <p>
-    <%= form.label :artist_name %>
-    <%= form.text_field :artist_name %>
-  </p>
-  <p>
-    <%= form.label :country %>
-    <%= form.select :country, all_countries, include_blank: true %>
-  </p>
-  <p>
-    <%= form.label "Select which of the below galleries you'd like to add this painting to:" %><br>
-    <%= form.collection_check_boxes :galleries, current_user.galleries, :id, :name %>
-  </p>
-
-  <%= form.submit %>
-<% end %>
+<% render 'form' %>

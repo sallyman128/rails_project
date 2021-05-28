@@ -7,4 +7,12 @@ class Painting < ApplicationRecord
   has_many :galleries, through: :gallery_paintings
   has_many :users, through: :galleries
 
+  def gallery_ids= (gallery_ids)
+    gallery_ids.each do |gallery_id|
+      unless gallery_id.empty?
+        gallery = Gallery.find_by(id: gallery_id)
+        self.galleries << gallery
+      end
+    end
+  end
 end
