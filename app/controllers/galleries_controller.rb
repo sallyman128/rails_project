@@ -18,7 +18,7 @@ class GalleriesController < ApplicationController
 
   def create
     @gallery = Gallery.new(gallery_params)
-    gallery_paintings_params[:paintings][1..].each { |id| @gallery.paintings << Painting.find_by(id: id) }
+    # gallery_paintings_params[:paintings][1..].each { |id| @gallery.paintings << Painting.find_by(id: id) }
     if @gallery.save
       redirect_to galleries_path
     else
@@ -31,7 +31,12 @@ class GalleriesController < ApplicationController
   end
 
   def update
-
+    @gallery = Gallery.find_by(id: params[:id])
+    if @gallery.update(gallery_params)
+      redirect_to gallery_path(@gallery)
+    else
+      render 'edit'
+    end
   end
   
   def destroy
@@ -40,10 +45,10 @@ class GalleriesController < ApplicationController
 
   private
     def gallery_params
-      params.require(:gallery).permit(:user_id, :name)
+      params.require(:gallery).permit(:user_id, :name, painting_ids:[])
     end
 
-    def gallery_paintings_params
-      params.require(:gallery).permit(paintings:[])
-    end
+    # def gallery_paintings_params
+    #   params.require(:gallery).permit(paintings:[])
+    # end
 end

@@ -1,5 +1,16 @@
 <h1>Gallery edit form!</h1>
 
+<%  if @gallery.errors.any? %>
+  <p style="color:red; font-weight: bold">
+    <%= @gallery.errors.size %> errors found. 
+  </p>
+  <ul>
+    <% @gallery.errors.full_messages.each do |message| %>
+      <li style="color:red;"><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_with model: @gallery do |form| %>
 
   <%= hidden_field :gallery, :user_id, value: current_user.id %>
