@@ -3,6 +3,7 @@
 <ul>
   <li>Name: <%= @user.name %></li>
   <li>Email: <%= @user.email %></li>
+  <li># of Galleries: <%= @user.galleries.size %></li>
 </ul>
 
 <%= button_to "Delete account", user_path(@user), method: :delete if @user == current_user %>
