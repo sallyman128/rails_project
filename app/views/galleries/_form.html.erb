@@ -1,0 +1,29 @@
+<%  if @gallery.errors.any? %>
+  <p style="color:red; font-weight: bold">
+    <%= @gallery.errors.size %> errors found. 
+  </p>
+  <ul>
+    <% @gallery.errors.full_messages.each do |message| %>
+      <li style="color:red;"><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @gallery do |form| %>
+
+  <%= hidden_field :gallery, :user_id, value: current_user.id %>
+
+  <p>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </p><br>
+
+
+  <p>Add pictures from the below list</p>
+  
+  <p>
+    <%= form.collection_check_boxes :painting_ids, Painting.all, :id, :title %>
+  </p>
+
+  <%= form.submit %>
+<% end %>
