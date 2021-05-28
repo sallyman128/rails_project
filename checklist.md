@@ -2,30 +2,32 @@
 
 Specs:
 - [x] Using Ruby on Rails for the project
-- [ ] Include at least one has_many relationship (x has_many y; e.g. User has_many Recipes)
-        User has_many Carts. Item has_many Carts.
-- [ ] Include at least one belongs_to relationship (x belongs_to y; e.g. Post belongs_to User)
-        A Cart belongs_to a User. A Cart belongs_to an Item.
-- [ ] Include at least two has_many through relationships (x has_many y through z; e.g. Recipe has_many Items through Ingredients)
-        A User has_many Items through Carts. An Item has_many Users through Carts.
-- [ ] Include at least one many-to-many relationship (x has_many y through z, y has_many x through z; e.g. Recipe has_many Items through Ingredients, Item has_many Recipes through Ingredients)
-        A User has_many Items through Carts. An Item has_many Users through Carts.
-- [ ] The "through" part of the has_many through includes at least one user submittable attribute, that is to say, some attribute other than its foreign keys that can be submitted by the app's user (attribute_name e.g. ingredients.quantity)
-        A cart has name
-- [ ] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
-        User must have name, email, and password.
-        Item must have name, price, and quantity.
+- [x] Include at least one has_many relationship (x has_many y; e.g. User has_many Recipes)
+        User has_many Galleries.
+- [x] Include at least one belongs_to relationship (x belongs_to y; e.g. Post belongs_to User)
+        Gallery belongs_to a User.
+- [x] Include at least two has_many through relationships (x has_many y through z; e.g. Recipe has_many Items through Ingredients)
+        Gallery has_many Paintings through gallery_paintings. Painting has_many Galleries through gallery_paintings.
+- [x] Include at least one many-to-many relationship (x has_many y through z, y has_many x through z; e.g. Recipe has_many Items through Ingredients, Item has_many Recipes through Ingredients)
+        User has_many Paintings through Galleries. Painting has_many Users through Galleries.
+- [x] The "through" part of the has_many through includes at least one user submittable attribute, that is to say, some attribute other than its foreign keys that can be submitted by the app's user (attribute_name e.g. ingredients.quantity)
+        A Gallery has a name.
+- [x] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
+        User must have a name, a unique email, and a password.
+        Gallery must have a name.
+        Painting must have a title, an artist, and a country.
 - [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
-- [ ] Include signup
-- [ ] Include login
-- [ ] Include logout
+
+- [x] Include signup
+- [x] Include login
+- [x] Include logout
 - [ ] Include third party signup/login (how e.g. Devise/OmniAuth)
-- [ ] Include nested resource show or index (URL e.g. users/2/recipes)
+- [x] Include nested resource show or index (URL e.g. users/2/recipes)
 - [ ] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
-- [ ] Include form display of validation errors (form URL e.g. /recipes/new)
+- [x] Include form display of validation errors (form URL e.g. /recipes/new)
 
 Confirm:
 - [ ] The application is pretty DRY
 - [ ] Limited logic in controllers
-- [ ] Views use helper methods if appropriate
-- [ ] Views use partials if appropriate
+- [x] Views use helper methods if appropriate
+- [x] Views use partials if appropriate
