@@ -1,17 +1,34 @@
 <h1>New gallery form</h1>
 
-<%= form_with model:@gallery do |form| %>
+<%= form_with model: @gallery do |form| %>
 
   <%= hidden_field :gallery, :user_id, value: session[:user_id] %>
 
   <p>
     <%= form.label :name %>
     <%= form.text_field :name %>
-  </p>
+  </p><br>
 
+
+  <p>Add pictures from the below list</p>
+  
   <p>
-    <%= form.collection_check_boxes :painting_ids, Painting.all, :id, :title %>
+    <%= form.collection_check_boxes :paintings, Painting.all, :id, :title %>
+  </p><br>
+  
+  <!--
+  <p>Want to add a new picture to your gallery? Add it here.</p>
+  <p>
+    <%= form.fields_for :paintings, @gallery.paintings.build do |paintings_fields| %>
+      <%= paintings_fields.label :title %>
+      <%= paintings_fields.text_field :title %><br>
+      <%= paintings_fields.label :artist_name %>
+      <%= paintings_fields.text_field :artist_name %><br>
+      <%= paintings_fields.label :country %>
+      <%= paintings_fields.select :country, all_countries, include_blank: true %>
+    <% end %>
   </p>
+  -->
 
   <%= form.submit %>
 <% end %>

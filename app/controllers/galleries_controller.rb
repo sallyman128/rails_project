@@ -14,18 +14,20 @@ class GalleriesController < ApplicationController
 
   def new
     @gallery = Gallery.new
-    @user = User.find_by(id: session[:user_id])
   end
 
   def create
-    # @gallery = Gallery.new(gallery_params)
-    # if @gallery 
-
-    raise params.inspect
+    @gallery = Gallery.new(gallery_params)
+    binding.pry
+    if @gallery.save
+      redirect_to galleries_path
+    else
+      render 'new'
+    end
   end
 
   private
     def gallery_params
-      params.require(:gallery).permit(:name, :painting_ids => [], :user_id)
+      params.require(:gallery).permit(:user_id, :name, paintings:[], paintings_attributes:[:title, :artist_name, :country])
     end
 end
