@@ -25,23 +25,6 @@ class PaintingsController < ApplicationController
     end
   end
 
-  def edit
-    @painting = Painting.find_by(id: params[:id])
-  end
-
-  def update
-    @painting = Painting.find_by(id: params[:id])
-    if @painting.update(painting_params)
-      redirect_to paintings_path
-    else
-      render 'edit'
-    end
-  end
-  
-  def destroy
-    
-  end
-
   private
   def painting_params
     params.require(:painting).permit(:title, :artist_name, :country, gallery_ids:[])
