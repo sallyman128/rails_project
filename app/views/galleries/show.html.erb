@@ -19,3 +19,5 @@
     </tr>
   <% end %>
 </table>
+
+<%= link_to("Edit gallery",edit_gallery_path(@gallery)) if @gallery.user == current_user %>

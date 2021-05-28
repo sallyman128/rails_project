@@ -1,5 +1,5 @@
 <header>
-  <% if session[:user_id] %>
+  <% if current_user %>
     <table>
       <tr>
         <th><%= link_to 'Home', root_path %></th>
