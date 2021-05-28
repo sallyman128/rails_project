@@ -34,8 +34,8 @@ class GalleriesController < ApplicationController
 
   end
   
-  def delete
-    
+  def destroy
+
   end
 
   private

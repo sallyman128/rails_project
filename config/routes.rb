@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :paintings
   resources :galleries
 
-  resources :users, only: [:show, :new, :create, :delete] do
+  resources :users, only: [:show, :new, :create, :destroy] do
     resources :galleries, only: :index
     resources :paintings, only: :index
   end

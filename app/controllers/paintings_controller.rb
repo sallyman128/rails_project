@@ -35,7 +35,7 @@ class PaintingsController < ApplicationController
 
   end
   
-  def delete
+  def destroy
     
   end
 

@@ -5,8 +5,9 @@
         <th><%= link_to 'Home', root_path %></th>
         <th><%= link_to "All galleries", galleries_path %></th>
         <th><%= link_to 'All paintings', paintings_path %></th>
-        <th><%= link_to "My galleries", user_galleries_path(session[:user_id]) %></th>
-        <th><%= link_to 'My paintings', user_paintings_path(session[:user_id]) %></th>
+        <th><%= link_to "My galleries", user_galleries_path(current_user) %></th>
+        <th><%= link_to 'My paintings', user_paintings_path(current_user) %></th>
+        <th><%= link_to 'Me', user_path(current_user) %></th>
         <th><%= link_to "Logout", logout_path, method: :post %></th>
       </tr>
     </table>
