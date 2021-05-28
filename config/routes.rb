@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root "static#home"
   resources :paintings, only: [:index, :show, :new, :create]
   resources :galleries, only: [:index, :show, :new, :create]
+
   resources :users, only: [:show, :new, :create] do
     resources :galleries, only: [:index]
   end
