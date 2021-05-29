@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
     user = User.find_or_create_by(id: auth[:uid]) do |u|
       u.name = auth['info']['name']
       u.email = auth['info']['email']
-      u.password = '0'
+      u.password = Passgen::generate(length: 30, symbols: true)
     end
     session[:user_id] = user.id
     redirect_to paintings_path
