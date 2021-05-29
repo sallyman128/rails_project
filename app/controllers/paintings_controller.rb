@@ -15,7 +15,7 @@ class PaintingsController < ApplicationController
   def new
     if params[:gallery_id]
       @painting = Painting.new()
-      @painting.gallery_ids << params[:gallery_id]
+      @painting.gallery_ids = [params[:gallery_id]]
     else
       @painting = Painting.new
     end
