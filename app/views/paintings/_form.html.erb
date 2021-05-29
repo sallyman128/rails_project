@@ -26,9 +26,22 @@
   <p>
     <%= form.label "Select at least one of your galleries to add this painting to:" %><br>
     <% unless current_user.galleries.empty? %>
-      <%= form.collection_check_boxes :gallery_ids, current_user.galleries, :id, :name %>
+      <span style="margin-left: 40px"><%= form.collection_check_boxes :gallery_ids, current_user.galleries, :id, :name %></span>
     <% else %>
-      <p>You don't have any galleries yet</p>
+      <p style="margin-left: 40px">You don't have any galleries yet</p>
+    <% end %>
+  </p>
+  <p>
+    And/or - Add it to a new gallery. <i>(optional)</i>
+  </p>
+  <p>
+    <%= form.fields_for :gallery_attributes, @painting.galleries.build do |gallery_fields| %>
+      <div style="margin-left: 40px">
+        <%= gallery_fields.hidden_field :user_id, value: current_user.id %>
+
+        <%= gallery_fields.label "Gallery name" %>
+        <%= gallery_fields.text_field :name %>
+      </div>
     <% end %>
   </p>
 

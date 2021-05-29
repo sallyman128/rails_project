@@ -17,4 +17,11 @@ class Painting < ApplicationRecord
       end
     end
   end
+
+  def gallery_attributes= (gallery_attr)
+    if self.valid? && !gallery_attr[:name].empty?
+      gallery = Gallery.create(gallery_attr)
+      self.galleries << gallery
+    end
+  end
 end
