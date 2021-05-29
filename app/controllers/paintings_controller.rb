@@ -25,7 +25,6 @@ class PaintingsController < ApplicationController
   def create
     @painting = Painting.new(painting_params)
     if @painting.save
-      # @painting = Painting.update(gallery_params)
       redirect_to paintings_path
     else
       render "new"
@@ -44,9 +43,5 @@ class PaintingsController < ApplicationController
   def painting_params
     params.require(:painting).permit(:title, :artist_name, :country, gallery_ids:[],gallery_attributes:[:name, :user_id])
   end
-
-  def gallery_params
-    params.require(:painting).permit(gallery_attributes:[:name, :user_id])
-  end
-
+  
 end
