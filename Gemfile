@@ -13,6 +13,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 gem 'bcrypt', '~> 3.1.7'
 gem 'countries'
+gem 'omniauth', '~> 1.3', '>= 1.3.1'
 
 gem 'bootsnap', '>= 1.4.4', require: false
 
