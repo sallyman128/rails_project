@@ -1,0 +1,27 @@
+
+<h1>Search Paintings</h1>
+
+<%= form_with url: search_paintings_path , method: :get do |form| %>
+  <%= form.text_field :query %>
+  <%= form.submit "Search" %>
+<% end %>
+
+<% unless @paintings.empty? %>
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Artist</th>
+      <th>Country</th>
+    </tr>
+    <% @paintings.each do |painting| %>
+      <tr>
+        <td><%= painting.title %></td>
+        <td><%= painting.artist_name %></td>
+        <td><%= painting.country %></td>
+        <td><%= link_to "Show", painting_path(painting) %></td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <p>No paintings match that search criteria.</p>
+<% end %>

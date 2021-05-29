@@ -30,6 +30,14 @@ class PaintingsController < ApplicationController
     end
   end
 
+  def search
+    if params[:query]
+      @paintings = Painting.search(params[:query])
+    else
+      @paintings = Painting.all
+    end
+  end
+
   private
   def painting_params
     params.require(:painting).permit(:title, :artist_name, :country, gallery_ids:[])

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :paintings, only: :index
   end
 
-  get "/search/:query", to: "paintings#search", as: "search_paintings"
+  get "/search", to: "paintings#search", as: "search_paintings"
 
   get "/signin", to: "sessions#signin"
   post "/login", to: "sessions#login"
