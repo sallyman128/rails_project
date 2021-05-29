@@ -16,5 +16,5 @@ Rails.application.routes.draw do
   get "/signin", to: "sessions#signin"
   post "/login", to: "sessions#login"
   post "/logout", to: "sessions#logout"
-  get '/auth/facebook/callback' => 'sessions#login'
+  get '/auth/facebook/callback' => 'sessions#omniauth_login'
 end
