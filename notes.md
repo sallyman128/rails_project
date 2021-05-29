@@ -9,3 +9,4 @@ Done - Restrict user access to all the different pages.
 
 -  Just gotta refactor
   - Maybe... let user create new gallery from paintings#new page
+  - Update README!!
