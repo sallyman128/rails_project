@@ -1,4 +1,5 @@
 class PaintingsController < ApplicationController
+  
   def index
     if params[:user_id]
       @user = User.find_by(id: params[:user_id])

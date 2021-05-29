@@ -1,4 +1,5 @@
 class GalleriesController < ApplicationController
+
   def index
     if params[:user_id]
       @user = User.find_by(id: params[:user_id])
@@ -48,5 +49,5 @@ class GalleriesController < ApplicationController
     def gallery_params
       params.require(:gallery).permit(:user_id, :name, painting_ids:[])
     end
-    
+  
 end
