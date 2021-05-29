@@ -13,7 +13,12 @@ class PaintingsController < ApplicationController
   end
 
   def new
-    @painting = Painting.new
+    if params[:gallery_id]
+      @painting = Painting.new()
+      @painting.gallery_ids << params[:gallery_id]
+    else
+      @painting = Painting.new
+    end
   end
 
   def create

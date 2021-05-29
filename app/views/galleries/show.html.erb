@@ -20,5 +20,6 @@
   <% end %>
 </table>
 
-<p><%= link_to "Edit gallery",edit_gallery_path(@gallery) if @gallery.user == current_user %></p>
+<p><%= link_to "Create a new painting", new_gallery_painting_path(@gallery) if @gallery.user == current_user %></p>
+<p><%= link_to "Edit gallery", edit_gallery_path(@gallery) if @gallery.user == current_user %></p>
 <p><%= link_to 'Destroy', gallery_path(@gallery), method: :delete if current_user == @gallery.user%></p>

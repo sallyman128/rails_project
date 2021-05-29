@@ -1,4 +1,4 @@
-<%  if @painting.errors.any? %>
+<% if @painting.errors.any? %>
   <p style="color:red; font-weight: bold">
     <%= @painting.errors.size %> errors found. 
   </p>
@@ -10,6 +10,7 @@
 <% end %>
 
 <%= form_with model: @painting do |form| %>
+
   <p>
     <%= form.label :title %>
     <%= form.text_field :title %>
@@ -23,8 +24,12 @@
     <%= form.select :country, all_countries, include_blank: true %>
   </p>
   <p>
-    <%= form.label "Select which of the below galleries you'd like to add this painting to:" %><br>
-    <%= form.collection_check_boxes :gallery_ids, current_user.galleries, :id, :name %>
+    <%= form.label "Select at least one of your galleries to add this painting to:" %><br>
+    <% unless current_user.galleries.empty? %>
+      <%= form.collection_check_boxes :gallery_ids, current_user.galleries, :id, :name %>
+    <% else %>
+      <p>You don't have any galleries yet</p>
+    <% end %>
   </p>
 
   <%= form.submit %>
