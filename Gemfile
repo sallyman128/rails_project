@@ -14,7 +14,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'bcrypt', '~> 3.1.7'
 gem 'countries'
 gem 'omniauth'
-gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
+gem 'omniauth-facebook'
+gem 'omniauth-rails_csrf_protection'
 gem 'dotenv-rails'
 
 gem 'bootsnap', '>= 1.4.4', require: false

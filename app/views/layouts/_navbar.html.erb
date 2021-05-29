@@ -18,6 +18,7 @@
         <th><%= link_to 'Home', root_path %></th>
         <th><%= link_to 'Signin', signin_path %></th>
         <th><%= link_to 'New user', new_user_path %></th>
+        <th><%= link_to 'Login with Facebook', '/auth/facebook', method: :post %></th>
       </tr>
     </table>
   <% end %>

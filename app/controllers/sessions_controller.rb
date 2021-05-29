@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def login #post
+    raise
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
@@ -16,5 +17,11 @@ class SessionsController < ApplicationController
     session.destroy
     redirect_to root_path
   end
+
+  private
+  
+    def auth
+      request.env['omniauth.auth']
+    end
 
 end
