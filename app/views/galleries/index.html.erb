@@ -4,20 +4,24 @@
   <h1>All Galleries</h1>
 <% end %>
 
-<table>
-  <tr>
-    <th>Gallery Name</th>
-    <th>Owner</th>
-  <tr>
-  <% @galleries.each do |gallery| %>
+<% unless @galleries.empty? %>
+  <table>
     <tr>
-      <td><%= gallery.name %></td>
-      <td><%= gallery.user.name %></td>
-      <td><%= link_to 'Show', gallery_path(gallery) %>
-      <td><%= link_to 'Edit', edit_gallery_path(gallery) if current_user == gallery.user%>
-      <td><%= link_to 'Destroy', gallery_path(gallery), method: :delete if current_user == gallery.user%>
-    </tr>
-  <% end %>
-</table>
+      <th>Gallery Name</th>
+      <th>Owner</th>
+    <tr>
+    <% @galleries.each do |gallery| %>
+      <tr>
+        <td><%= gallery.name %></td>
+        <td><%= gallery.user.name %></td>
+        <td><%= link_to 'Show', gallery_path(gallery) %>
+        <td><%= link_to 'Edit', edit_gallery_path(gallery) if current_user == gallery.user%>
+        <td><%= link_to 'Destroy', gallery_path(gallery), method: :delete if current_user == gallery.user%>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <p>There are no galleries to be shown here. Try adding a new one.</p>
+<% end %>
 
 <p><%= button_to 'Add a new gallery', new_gallery_path, method: :get %></p>

@@ -4,21 +4,25 @@
   <h1>All Paintings</h1>
 <% end %>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Artist</th>
-    <th>Country</th>
-  </tr>
-  <% @paintings.each do |painting| %>
+<% unless @paintings.empty? %>
+  <table>
     <tr>
-      <td><%= painting.title %></td>
-      <td><%= painting.artist_name %></td>
-      <td><%= painting.country %></td>
-      <td><%= link_to "Show", painting_path(painting) %></td>
+      <th>Title</th>
+      <th>Artist</th>
+      <th>Country</th>
     </tr>
-  <% end %>
-</table>
+    <% @paintings.each do |painting| %>
+      <tr>
+        <td><%= painting.title %></td>
+        <td><%= painting.artist_name %></td>
+        <td><%= painting.country %></td>
+        <td><%= link_to "Show", painting_path(painting) %></td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <p>There are no paintings to show here. Try adding one.</p>
+<% end %>
 
 <p>
   <%= button_to 'Add a new painting', new_painting_path, method: :get %>
