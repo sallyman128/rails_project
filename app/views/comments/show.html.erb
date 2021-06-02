@@ -1,1 +1,7 @@
-<h1>Comment Show</h1>
+<h1>Comment Show for: <%= @comment.painting.title %></h1>
+
+<p>Comment message: <i><%= @comment.message %></i><p>
+
+<%= link_to 'Edit comment', edit_comment_path %>
+<br><br>
+<%= link_to 'Back to painting', painting_path(@comment.painting) %>

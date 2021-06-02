@@ -13,6 +13,25 @@ class CommentsController < ApplicationController
     end
   end
 
+  def show
+    @comment = Comment.find_by(id: params[:id])
+  end
+  
+  def edit
+    @comment = Comment.find_by(id: params[:id])
+    @painting = @comment.painting
+  end
+
+  def update
+    @comment = Comment.find_by(id: params[:id])
+    @painting = @comment.painting
+    if @comment.update(comment_params)
+      redirect_to comment_path(@comment)
+    else
+      render 'edit'
+    end
+  end
+
   private
   def comment_params
     params.require(:comment).permit(:user_id, :painting_id, :message)
