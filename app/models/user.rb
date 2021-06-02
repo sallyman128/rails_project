@@ -6,4 +6,7 @@ class User < ApplicationRecord
   has_many :galleries
   has_many :paintings, through: :galleries
 
+  has_many :comments
+  has_many :paintings, through: :comments
+
 end

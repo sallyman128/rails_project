@@ -7,6 +7,9 @@ class Painting < ApplicationRecord
   has_many :galleries, through: :gallery_paintings
   has_many :users, through: :galleries
 
+  has_many :comments
+  has_many :users, through: :comments
+
   scope :search, -> (query) { where("title LIKE ?", "%" + query + "%") }
 
   def gallery_ids= (gallery_ids)
