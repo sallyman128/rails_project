@@ -21,9 +21,11 @@ class UsersController < ApplicationController
 
   def destroy
     user = User.find_by(id: params[:id])
-    user.galleries.destroy
-    user.destroy
-    session.destroy
+    if user && user == User.find_by(id: session[:user_id])
+      user.galleries.destroy
+      user.destroy
+      session.destroy
+    end
     redirect_to root_path
   end
 

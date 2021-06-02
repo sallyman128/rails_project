@@ -4,15 +4,24 @@
 <h3>Artist: <%= @painting.artist_name %></h3>
 <h3>Country: <%= @painting.country %></h3>
 
-<% if @painting.users.include?(current_user) %>
-  <p>Below are your galleries that include this painting.</p>
-  <ul>
-    <% current_user.galleries.each do |gallery| %>
-      <% if gallery.paintings.include?(@painting) %>
-        <li><%= link_to gallery.name, gallery_path(gallery) %></li>
-      <% end %>
-    <% end %>
-  </ul>
+<% if @painting.comments.empty? %>
+  <p>No comments listed</p>
 <% else %>
-  <p>None of your galleries include this picture.</p>
+  <table>
+    <tr>
+      <th>Comments</th>
+    </tr>
+    <% @painting.comments.each do |comment| %>
+      <tr>
+        <td>
+          <%= comment.message %>
+        </td>
+        <td>
+          <%= link_to 'Show', comment_path(comment) %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
 <% end %>
+
+<p><%= link_to 'Add a comment', new_comment_path %></p>

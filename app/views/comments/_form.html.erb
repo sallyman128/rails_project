@@ -1,0 +1,23 @@
+<%  if @comment.errors.any? %>
+  <p style="color:red; font-weight: bold">
+    <%= @comment.errors.size %> errors found. 
+  </p>
+  <ul>
+    <% @comment.errors.full_messages.each do |message| %>
+      <li style="color:red;"><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @comment do |form| %>
+
+  <%= hidden_field :comment, :user_id, value: current_user.id %>
+  <%= hidden_field :comment, :painting_id, value: @painting.id %>
+
+  <p>
+    <%= form.label :message %>
+    <%= form.text_field :message %>
+  </p><br>
+
+  <%= form.submit %>
+<% end %>
