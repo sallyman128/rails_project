@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   def new
     @comment = Comment.new
-    @painting = Painting.find_by(params[:painting_id])
+    @painting = Painting.find_by(id: params[:painting_id])
   end
 
   def create
@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find_by(id: params[:id])
     @painting = @comment.painting
     if @comment.update(comment_params)
-      redirect_to comment_path(@comment)
+      redirect_to painting_path(@painting)
     else
       render 'edit'
     end
