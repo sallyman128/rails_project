@@ -10,7 +10,7 @@
 end
 
 Painting.all.each do |painting|
-  painting.users.each do |user|
+  User.all.each do |user|
     painting.comments.create(message: Faker::Quotes::Shakespeare.king_richard_iii_quote, user_id: user.id)
   end
 end
