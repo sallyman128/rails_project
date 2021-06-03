@@ -2,6 +2,10 @@
 
 <p>Comment message: <i><%= @comment.message %></i><p>
 
-<%= link_to 'Edit comment', edit_painting_comment_path(@comment) if @comment.user == current_user %>
+
+<% if @comment.user == current_user %>
+  <%= link_to 'Edit comment', edit_painting_comment_path(@comment.painting, @comment) %>
+  <%= link_to 'Delete comment', painting_comment_path(@comment.painting, @comment), method: :delete %>
+<% end %>
 <br><br>
 <%= link_to 'Back to painting', painting_path(@comment.painting) %>

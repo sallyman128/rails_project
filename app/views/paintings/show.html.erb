@@ -17,7 +17,7 @@
           <%= comment.message %>
         </td>
         <td>
-          <%= link_to 'Show', comment_path(comment) %>
+          <%= link_to 'Show', painting_comment_path(@painting, comment) %>
         </td>
       </tr>
     <% end %>
