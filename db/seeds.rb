@@ -8,3 +8,9 @@
   gallery2.paintings << Painting.all[i+2]
   gallery2.paintings << Painting.all[i+3]
 end
+
+Painting.all.each do |painting|
+  painting.users.each do |user|
+    painting.comments.create(message: Faker::Quotes::Shakespeare.king_richard_iii_quote, user_id: user.id)
+  end
+end

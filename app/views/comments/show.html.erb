@@ -2,6 +2,6 @@
 
 <p>Comment message: <i><%= @comment.message %></i><p>
 
-<%= link_to 'Edit comment', edit_comment_path %>
+<%= link_to 'Edit comment', edit_painting_comment_path(@comment) if @comment.user == current_user %>
 <br><br>
 <%= link_to 'Back to painting', painting_path(@comment.painting) %>

@@ -2,12 +2,12 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root "static#home"
 
-  resources :comments, only: [:show, :edit, :update, :destroy]
+  resources :comments, only: [:show, :destroy]
 
   resources :paintings, only: [:index, :show, :new, :create] do
-    resources :comments, only: [:new, :create, :index]
+    resources :comments, only: [:index, :edit, :update, :new, :create]
   end
-  
+
   resources :galleries do
     resources :paintings, only: :new
   end

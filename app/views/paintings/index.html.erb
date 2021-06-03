@@ -11,7 +11,7 @@
       <th>Artist</th>
       <th>Country</th>
     </tr>
-    <% @paintings.each do |painting| %>
+    <% @paintings.uniq.each do |painting| %>
       <tr>
         <td><%= painting.title %></td>
         <td><%= painting.artist_name %></td>
