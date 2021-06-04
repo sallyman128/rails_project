@@ -2,8 +2,24 @@
 
 <ul>
   <li>Email: <i><%= @user.email %></i></li>
-  <li># of Galleries: <i><%= @user.galleries.size %></i></li>
-  <li># of Paintings: <i><%= @user.paintings.uniq.size %></i></li>
 </ul>
+
+<% unless @user.comments.empty? %>
+  <p>My comments</p>
+  <table>
+    <tr>
+      <th>Painting</th>
+      <th>Comment</th>
+    </tr>
+    <% @user.comments.each do |comment| %>
+      <tr>
+        <td><%= comment.painting.title %></td>
+        <td><%= comment.message %></td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <p>You've not commented on any painting. Try viewing a painting and adding your first comment.</p>
+<% end %>
 
 <%= button_to "Delete account", user_path(@user), method: :delete if @user == current_user %>
